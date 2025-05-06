@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+// import { Label } from "@/components/ui/label";
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Sun, Moon, Laptop } from "lucide-react";
 import { format, addDays, parseISO, isToday } from "date-fns";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -36,7 +36,7 @@ export default function PlannerPage() {
   const [money, setMoney] = useState([{ sign: "", amount: "", type: "" }]);
   const [highlight, setHighlight] = useState("");
   const [journal, setJournal] = useState("");
-  const [celebrated, setCelebrated] = useState({ top3: false, water: false });
+//   const [celebrated, setCelebrated] = useState({ top3: false, water: false });
 
   // Streak logic
   const [streak, setStreak] = useState(0);
@@ -247,7 +247,6 @@ export default function PlannerPage() {
       // If not completed today, don't update streak
     }
     setStreak(streakObj.count);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [top3Complete, selectedDate]);
 
   // Motivational quotes
@@ -268,12 +267,12 @@ export default function PlannerPage() {
   }, []);
 
   // 1. Add section complete booleans
-  const todosSectionComplete = todos.some(t => t.done);
-  const callsSectionComplete = calls.some(c => c.done);
-  const menuSectionComplete = Object.values(menu).some(Boolean);
-  const moneySectionComplete = money.some(row => row.amount && row.type);
-  const highlightSectionComplete = !!highlight;
-  const journalSectionComplete = !!journal;
+//   const todosSectionComplete = todos.some(t => t.done);
+//   const callsSectionComplete = calls.some(c => c.done);
+//   const menuSectionComplete = Object.values(menu).some(Boolean);
+//   const moneySectionComplete = money.some(row => row.amount && row.type);
+//   const highlightSectionComplete = !!highlight;
+//   const journalSectionComplete = !!journal;
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col items-center py-0 px-2 sm:px-0">
@@ -364,7 +363,7 @@ export default function PlannerPage() {
         <section className="animate-section-fade">
           <div className="font-semibold mb-2 flex items-center gap-2 text-lg">
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-200 bg-opacity-40">🏆</span>
-            Today's Top 3 {top3Complete && <span className="ml-1 text-green-400 text-lg">✔️</span>}
+            Today&apos;s Top 3 {top3Complete && <span className="ml-1 text-green-400 text-lg">✔️</span>}
           </div>
           <div className="flex flex-col gap-2">
             {top3.map((task, i) => (
@@ -419,7 +418,7 @@ export default function PlannerPage() {
             <div>
               <div className="font-semibold mb-2 flex items-center gap-2 text-lg">
                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-mint-200 bg-opacity-40">📝</span>
-                To Do's
+                To Do&apos;s
               </div>
               <div className="flex flex-col gap-1">
                 {todos.map((todo, i) => (
