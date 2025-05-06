@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from "react";
+import { Suspense } from 'react';
 import { useSearchParams, useRouter } from "next/navigation";
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
@@ -16,7 +17,7 @@ function getTodayISO() {
   return new Date().toISOString().slice(0, 10);
 }
 
-export default function PlannerPage() {
+function PlannerContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const initialDate = searchParams.get("date") || getTodayISO();
@@ -608,3 +609,15 @@ export default function PlannerPage() {
     </div>
   );
 } 
+
+export default function PlannerPage() {
+    return (
+      <div>
+        {/* Any static content that doesn't need searchParams */}
+        
+        <Suspense fallback={<div>Loading planner...</div>}>
+          <PlannerContent />
+        </Suspense>
+      </div>
+    );
+  }
